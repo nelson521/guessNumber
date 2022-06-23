@@ -26,7 +26,7 @@
   width: 50%;
 }
 
-.guessing-form {
+#guessing-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,18 +35,18 @@
   margin-top: 1.5rem;
 }
 
-.guessing-form h1 {
+#guessing-form h1 {
   font-weight: lighter;
   font-size: 2.5rem;
 }
 
-.guessing-form #numInput {
+#guessing-form #numInput {
   padding: 0.2rem;
   border: 1px solid black;
   border-radius: 10px;
   margin: 0.5rem 0;
 }
 
-.guessing-form #submitBtn {
+#guessing-form #submitBtn {
   padding: 0.5rem;
 }
