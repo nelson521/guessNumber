@@ -2,9 +2,10 @@ const form = document.getElementById('guessingForm');
 const numInput = document.getElementById('numInput');
 const submitBtn = document.getElementById('submitBtn');
 let previousCount = document.getElementById('previousGuess');
-let guessesRemaining = document.getElementById('guessesRemaining');
+let guessesRemaining = document.getElementById('guessesRemaining').textContent;
 let scale = document.getElementById('scale');
-let randomNumber = Math.floor(Math.random() * 10);
+let randomNumber = Math.floor(Math.random() * 10) + 1;
+let attempts = 0;
 
 form.addEventListener('submit', function (e) {
   let theValue = parseInt(numInput.value);
@@ -20,18 +21,36 @@ form.addEventListener('submit', function (e) {
   */
 
   if (theValue < randomNumber) {
+    scale.style.color = 'red';
     scale.textContent = 'Too low! Try again!';
   } else if (theValue > randomNumber) {
+    scale.style.color = 'red';
     scale.textContent = 'Too High! Try again!';
   } else {
     scale.style.color = 'green';
     scale.textContent = 'Volia! You win!';
+    scale.style.fontSize = '2rem';
   }
 
   if (theValue === randomNumber) {
   } else {
     previousCount.textContent += theValue;
   }
+
+  if (theValue !== randomNumber) {
+    attempts += 1;
+    console.log(attempts);
+  }
+  if (attempts >= 3) {
+    submitBtn.disabled = true;
+    scale.textContent = 'You lose!';
+    scale.style.color = 'red';
+    scale.style.fontSize = '2rem';
+  }
+
+  // if (guessesRemaining === '0') {
+  //   submitBtn.disabled = true;
+  // }
 
   e.preventDefault();
 });
